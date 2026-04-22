@@ -1,0 +1,22 @@
+[
+  {
+    "question": "What is retrieval-augmented generation?",
+    "ground_truth": "Retrieval-Augmented Generation (RAG) is a technique that combines a retrieval system with a language model. It retrieves relevant documents from a knowledge base and uses them as context when generating answers, reducing hallucination and improving factual accuracy."
+  },
+  {
+    "question": "What embedding model is used in this pipeline?",
+    "ground_truth": "The pipeline uses OpenAI's text-embedding-3-small model to convert text chunks into dense vector representations for similarity search."
+  },
+  {
+    "question": "How does FAISS store and retrieve embeddings?",
+    "ground_truth": "FAISS (Facebook AI Similarity Search) stores embedding vectors in an index optimized for approximate nearest-neighbor search. At query time, the query is embedded and compared against stored vectors using cosine or L2 distance to retrieve the top-k most similar chunks."
+  },
+  {
+    "question": "What chunking strategy is used and why?",
+    "ground_truth": "The pipeline uses RecursiveCharacterTextSplitter with chunk_size=512 and chunk_overlap=64. The overlap ensures that context is not lost at chunk boundaries, which is critical for coherent retrieval."
+  },
+  {
+    "question": "How is answer quality evaluated?",
+    "ground_truth": "Answer quality is evaluated using the RAGAS framework, which computes answer_relevancy, faithfulness, context_precision, and context_recall against a held-out set of ground-truth QA pairs."
+  }
+]

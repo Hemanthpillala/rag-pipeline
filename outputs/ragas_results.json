@@ -1,0 +1,35 @@
+{
+  "evaluation_date": "2025-11-14",
+  "model": "gpt-4o-mini",
+  "embedding_model": "text-embedding-3-small",
+  "vector_store": "FAISS",
+  "chunk_size": 512,
+  "chunk_overlap": 64,
+  "top_k": 4,
+  "n_eval_samples": 87,
+  "metrics": {
+    "answer_relevancy":  0.8721,
+    "faithfulness":      0.9103,
+    "context_precision": 0.8412,
+    "context_recall":    0.7934
+  },
+  "ablation": {
+    "chunk_size_256":  {"answer_relevancy": 0.8214, "faithfulness": 0.8891},
+    "chunk_size_512":  {"answer_relevancy": 0.8721, "faithfulness": 0.9103},
+    "chunk_size_1024": {"answer_relevancy": 0.8503, "faithfulness": 0.8762},
+    "top_k_2":         {"answer_relevancy": 0.8301, "faithfulness": 0.9012},
+    "top_k_4":         {"answer_relevancy": 0.8721, "faithfulness": 0.9103},
+    "top_k_8":         {"answer_relevancy": 0.8614, "faithfulness": 0.8934}
+  },
+  "latency_ms": {
+    "embedding_p50": 42,
+    "embedding_p95": 78,
+    "retrieval_p50":  8,
+    "retrieval_p95": 14,
+    "llm_p50": 1240,
+    "llm_p95": 2180,
+    "end_to_end_p50": 1312,
+    "end_to_end_p95": 2280
+  },
+  "notes": "Best config: chunk_size=512, overlap=64, k=4. Chunk size 256 degrades faithfulness due to incomplete context windows."
+}
